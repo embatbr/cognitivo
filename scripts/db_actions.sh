@@ -25,21 +25,23 @@ elif [ "$COMMAND" == "drop" ]; then
     dropuser cognitivo
 
 elif [[ "up down clean"[*] =~ $COMMAND ]]; then
-    # read -s -p "Type password for user 'cognitivo': " PASSWORD
-    # echo
-    PASSWORD='password'
+    echo "Running command '$COMMAND'."
+
+    read -s -p "Type password for user 'cognitivo': " PASSWORD
+    echo
     echo "Loading file 'sql/$COMMAND.sql'"
     PGPASSWORD=$PASSWORD psql -h localhost -p 5432 -U cognitivo -d cognitivo -f sql/$COMMAND.sql
 
 elif [ "$COMMAND" == "populate" ]; then
-    # read -s -p "Type password for user 'cognitivo': " PASSWORD
-    # echo
-    PASSWORD='password'
+    echo "Populating database."
+
+    read -s -p "Type password for user 'cognitivo': " PASSWORD
+    echo
 
     function augment {
         filename="$1"
-        fields="$2"
-        table="$3"
+        table="$2"
+        fields="$3"
 
         python3 scripts/preproc.py ${filename} "$fields"
 
@@ -49,13 +51,15 @@ elif [ "$COMMAND" == "populate" ]; then
         rm files/${filename}_aug.csv
     }
 
-    augment comp_boss "groove unique_feature orientation" components
-    augment bill_of_materials "" materials
+    augment comp_boss components "groove unique_feature orientation"
+    augment bill_of_materials materials ""
+    augment price_quote quotation "bracket_pricing"
 
 elif [ "$COMMAND" == "access" ]; then
-    # read -s -p "Type password for user 'cognitivo': " PASSWORD
-    # echo
-    PASSWORD='password'
+    echo "Accessing database."
+
+    read -s -p "Type password for user 'cognitivo': " PASSWORD
+    echo
     echo "Accessing database 'cognitivo'."
     PGPASSWORD=$PASSWORD psql -h localhost -p 5432 -U cognitivo -d cognitivo
 

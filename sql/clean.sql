@@ -1,6 +1,9 @@
 -- Truncates all tables.
 
 
+TRUNCATE TABLE quotation;
+
+
 TRUNCATE TABLE materials;
 
 

@@ -16,19 +16,19 @@ CREATE TABLE components (
     outside_shape component_outside_shape,
     base_type component_base_type,
 
-    height_over_tube DECIMAL NOT NULL CHECK (height_over_tube >= 0),
-    bolt_pattern_long DECIMAL CHECK (bolt_pattern_long >= 0),
-    bolt_pattern_wide DECIMAL CHECK (bolt_pattern_wide >= 0),
+    height_over_tube DECIMAL NOT NULL CHECK (height_over_tube >= 0.0),
+    bolt_pattern_long DECIMAL CHECK (bolt_pattern_long >= 0.0),
+    bolt_pattern_wide DECIMAL CHECK (bolt_pattern_wide >= 0.0),
 
     groove BOOLEAN NOT NULL,
 
-    base_diameter DECIMAL CHECK (base_diameter >= 0),
-    shoulder_diameter DECIMAL CHECK (shoulder_diameter >= 0),
+    base_diameter DECIMAL CHECK (base_diameter >= 0.0),
+    shoulder_diameter DECIMAL CHECK (shoulder_diameter >= 0.0),
 
     unique_feature BOOLEAN,
     orientation BOOLEAN,
 
-    weight DECIMAL CHECK (weight >= 0),
+    weight DECIMAL CHECK (weight >= 0.0),
 
     PRIMARY KEY (id)
 );
@@ -63,4 +63,23 @@ CREATE TABLE materials (
 
     PRIMARY KEY (id)
     -- No foreign key constraint. There will happen violations.
+);
+
+
+CREATE TABLE quotation (
+    material_id CHAR(8) NOT NULL,
+    supplier CHAR(6) NOT NULL,
+
+    quote_date DATE NOT NULL,
+
+    annual_usage INTEGER NOT NULL CHECK (annual_usage >= 0),
+    min_order_quantity INTEGER NOT NULL CHECK (min_order_quantity >= 0),
+
+    bracket_pricing BOOLEAN NOT NULL,
+
+    quantity INTEGER NOT NULL CHECK (quantity >= 0),
+    cost DECIMAL NOT NULL CHECK (cost >= 0.0),
+
+    FOREIGN KEY (material_id) REFERENCES materials (id)
+    -- No primary key here.
 );
