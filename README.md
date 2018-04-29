@@ -8,7 +8,7 @@ Here is the hierarchy of objects, from most to least granular (#1 up to #3):
 
 1. Component:
     - Basically, a **pipe**.
-2. Tube Assembly:
+2. Material:
     - A **set of pipes**.
     - A construction material may be composed of several components:
         - e.g., 3 straight pipes and 2 curved pipes, shaping a "U";
@@ -20,11 +20,11 @@ Here is the hierarchy of objects, from most to least granular (#1 up to #3):
 ## Implementation
 
 - Database: PostgreSQL
-- Loading: Bash scripts
+- Loading: Bash and Python scripts
 
 ### Commands
 
-Run script `db_actions.sql`, passing the command as parameter. Commands:
+Run script `db_actions.sh`, passing the command as parameter. Commands:
 
 - `create` to create a local user and database. A new password will be required.
 - `drop` to drop the local user and database.

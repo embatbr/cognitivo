@@ -53,7 +53,7 @@ elif [ "$COMMAND" == "populate" ]; then
 
     augment comp_boss components "groove unique_feature orientation"
     augment bill_of_materials materials ""
-    augment price_quote quotation "bracket_pricing"
+    augment price_quote quotations "bracket_pricing"
 
 elif [ "$COMMAND" == "access" ]; then
     echo "Accessing database."

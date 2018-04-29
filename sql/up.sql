@@ -62,11 +62,11 @@ CREATE TABLE materials (
     quantity_8 INTEGER CHECK (quantity_8 >= 0),
 
     PRIMARY KEY (id)
-    -- No foreign key constraint. There will happen violations.
+    -- No foreign key constraint. There will happen violations when referencing table 'components'.
 );
 
 
-CREATE TABLE quotation (
+CREATE TABLE quotations (
     material_id CHAR(8) NOT NULL,
     supplier CHAR(6) NOT NULL,
 
@@ -81,5 +81,5 @@ CREATE TABLE quotation (
     cost DECIMAL NOT NULL CHECK (cost >= 0.0),
 
     FOREIGN KEY (material_id) REFERENCES materials (id)
-    -- No primary key here.
+    -- No primary key here. There is no need (and it would complicate the table loading).
 );

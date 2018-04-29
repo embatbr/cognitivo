@@ -1,7 +1,7 @@
 -- Drops all structures (types, tables and etc.).
 
 
-DROP TABLE quotation;
+DROP TABLE quotations;
 
 
 DROP TABLE materials;

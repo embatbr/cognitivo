@@ -1,7 +1,7 @@
 -- Truncates all tables.
 
 
-TRUNCATE TABLE quotation;
+TRUNCATE TABLE quotations;
 
 
 TRUNCATE TABLE materials;
