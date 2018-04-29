@@ -1,6 +1,9 @@
 -- Drops all structures (types, tables and etc.).
 
 
+DROP TABLE materials;
+
+
 DROP TABLE components;
 
 DROP TYPE component_outside_shape;

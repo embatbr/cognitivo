@@ -12,7 +12,8 @@ PROJECT_ROOT_PATH = os.environ.get('PROJECT_ROOT_PATH')
 
 if __name__ == '__main__':
     filename = sys.argv[1]
-    fields = sys.argv[2].split(' ')
+    fields = sys.argv[2].strip()
+    fields = fields.split(' ') if fields else list()
 
     csvfile = open('%s/files/%s.csv' % (PROJECT_ROOT_PATH, filename))
     reader = csv.DictReader(csvfile)

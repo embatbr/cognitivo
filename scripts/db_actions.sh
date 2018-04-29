@@ -50,6 +50,7 @@ elif [ "$COMMAND" == "populate" ]; then
     }
 
     augment comp_boss "groove unique_feature orientation" components
+    augment bill_of_materials "" materials
 
 elif [ "$COMMAND" == "access" ]; then
     # read -s -p "Type password for user 'cognitivo': " PASSWORD

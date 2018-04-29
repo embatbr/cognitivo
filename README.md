@@ -8,7 +8,7 @@ Here is the hierarchy of objects, from most to least granular (#1 up to #3):
 
 1. Component:
     - Basically, a **pipe**.
-2. Materials:
+2. Tube Assembly:
     - A **set of pipes**.
     - A construction material may be composed of several components:
         - e.g., 3 straight pipes and 2 curved pipes, shaping a "U";
@@ -24,4 +24,12 @@ Here is the hierarchy of objects, from most to least granular (#1 up to #3):
 
 ### Commands
 
-Run script `db_actions.sql`, passing the command as parameter
+Run script `db_actions.sql`, passing the command as parameter. Commands:
+
+- `create` to create a local user and database. A new password will be required.
+- `drop` to drop the local user and database.
+- `up` to create the structures. A password will be required.
+- `down` to drop the structures. A password will be required.
+- `populate` to load the data from CSV files. A password will be required.
+- `clean` to empty the tables. A password will be required.
+- `access` to access the database **cognitivo** by terminal. A password will be required.
